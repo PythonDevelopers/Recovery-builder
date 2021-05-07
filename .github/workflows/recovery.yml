@@ -14,12 +14,12 @@ on:
     types: [started]
 
 env:
-  MANIFEST: https://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-9.0
-  DEVICE: begonia
-  DT_LINK: https://github.com/sasukeuchiha-clan/BDT
-  DT_PATH: device/xiaomi/begonia
-  KERNEL_LINK: https://github.com/ZyCromerZ/begonia -b 20210205/main-SLMK2
-  KERNEL_PATH: kernel/xiaomi/mt6785
+  MANIFEST: repo init -u git://github.com/SHRP/platform_manifest_twrp_omni.git -b v3_9.0
+  DEVICE: o7prolte
+  DT_LINK: https://github.com/sasukeuchiha-clan/device_samsung_o7prolte
+  DT_PATH: device/samsung/o7prolte
+  KERNEL_LINK: https://github.com/Galaxy-MSM8916/android_kernel_samsung_msm8916
+  KERNEL_PATH: kernel/samsung/msm8916
   TARGET: recoveryimage
   TZ: Asia/Kolkata
 
@@ -36,8 +36,8 @@ jobs:
             sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d
             docker rmi `docker images -q`
             sudo apt-get remove account-plugin-facebook account-plugin-flickr account-plugin-jabber account-plugin-salut account-plugin-twitter account-plugin-windows-live account-plugin-yahoo aisleriot brltty duplicity empathy empathy-common example-content gnome-accessibility-themes gnome-contacts gnome-mahjongg gnome-mines gnome-orca gnome-screensaver gnome-sudoku gnome-video-effects gnomine landscape-common libreoffice-avmedia-backend-gstreamer libreoffice-base-core libreoffice-calc libreoffice-common libreoffice-core libreoffice-draw libreoffice-gnome libreoffice-gtk libreoffice-impress libreoffice-math libreoffice-ogltrans libreoffice-pdfimport libreoffice-style-galaxy libreoffice-style-human libreoffice-writer libsane libsane-common mcp-account-manager-uoa python3-uno rhythmbox rhythmbox-plugins rhythmbox-plugin-zeitgeist sane-utils shotwell shotwell-common telepathy-gabble telepathy-haze telepathy-idle telepathy-indicator telepathy-logger telepathy-mission-control-5 telepathy-salut totem totem-common totem-plugins printer-driver-brlaser printer-driver-foo2zjs printer-driver-foo2zjs-common printer-driver-m2300w printer-driver-ptouch printer-driver-splix
-            git config --global user.name "ElytrA8"
-            git config --global user.email "manofuranium@gmail.com"         
+            git config --global user.name "sasukeuchiha-clan"
+            git config --global user.email "ahirearyan2016@gmail.com"         
             sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql* php* 
             sudo -E apt-get clean 
             sudo -E apt-get -qq update

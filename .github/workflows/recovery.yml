@@ -14,12 +14,12 @@ on:
     types: [started]
 
 env:
-  MANIFEST: git://github.com/SHRP/platform_manifest_twrp_omni.git -b v3_9.0
-  DEVICE: o7prolte
-  DT_LINK: https://github.com/sasukeuchiha-clan/device_samsung_o7prolte
-  DT_PATH: device/samsung/o7prolte
-  KERNEL_LINK: https://github.com/Galaxy-MSM8916/android_kernel_samsung_msm8916
-  KERNEL_PATH: kernel/samsung/msm8916
+  MANIFEST: git://github.com/minimal-manifest-twrp/platform_manifest_twrp_lineageos.git -b twrp-14.1
+  DEVICE: begonia
+  DT_LINK: https://github.com/HyperNotAryanX97/device_redmi_begonia
+  DT_PATH: device/redmi/begonia
+  KERNEL_LINK: https://github.com/AgentFabulous/begonia
+  KERNEL_PATH: kernel/xiaomi/mt6785
   TARGET: recoveryimage
   TZ: Asia/Kolkata
 
@@ -51,13 +51,15 @@ jobs:
              cd work
              repo init -u $MANIFEST --depth=1 --groups=all,-notdefault,-device,-darwin,-x86,-mips
              repo sync -j4
-             git clone $DT_LINK --depth=1 --single-branch $DT_PATH
+             git clone $DT_LINK --depth=1 -b fix $DT_PATH
+             git clone https://github.com/PotatoProject/device_mediatek_sepolicy -b dumaloo-release device/mediatek/sepolicy
+             git https://github.com/HyperNotAryanX97/vendor_redmi_begonia vendor/redmi/begonia
              git clone $KERNEL_LINK --depth=1 --single-branch $KERNEL_PATH
              
        - name: Build
          run: |
               cd work
-              . build/envsetup.sh &&lunch omni_$DEVICE-eng &&export ALLOW_MISSING_DEPENDENCIES=true && mka $TARGET
+              . build/envsetup.sh &&lunch lineage_$DEVICE-eng &&export ALLOW_MISSING_DEPENDENCIES=true && mka $TARGET
              
        - uses: actions/upload-artifact@v2
          with:

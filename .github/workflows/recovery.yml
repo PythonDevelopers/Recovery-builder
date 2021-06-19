@@ -53,7 +53,7 @@ jobs:
              repo sync -j4
              git clone $DT_LINK --depth=1 -b fix $DT_PATH
              git clone https://github.com/PotatoProject/device_mediatek_sepolicy -b dumaloo-release device/mediatek/sepolicy
-             git https://github.com/HyperNotAryanX97/vendor_redmi_begonia vendor/redmi/begonia
+             git clone https://github.com/HyperNotAryanX97/vendor_redmi_begonia vendor/redmi/begonia
              git clone $KERNEL_LINK --depth=1 --single-branch $KERNEL_PATH
              
        - name: Build

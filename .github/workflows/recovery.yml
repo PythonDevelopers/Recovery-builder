@@ -14,12 +14,10 @@ on:
     types: [started]
 
 env:
-  MANIFEST: git://github.com/minimal-manifest-twrp/platform_manifest_twrp_lineageos.git -b twrp-14.1
-  DEVICE: begonia
-  DT_LINK: https://github.com/HyperNotAryanX97/device_redmi_begonia
-  DT_PATH: device/redmi/begonia
-  KERNEL_LINK: https://github.com/AgentFabulous/begonia
-  KERNEL_PATH: kernel/xiaomi/mt6785
+  MANIFEST: git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0
+  DEVICE: E6746
+  KERNEL_LINK: https://github.com/MicromaxOSS/In_1_android_kernel
+  KERNEL_PATH: kernel/micromax/E6746
   TARGET: recoveryimage
   TZ: Asia/Kolkata
 
@@ -51,15 +49,14 @@ jobs:
              cd work
              repo init -u $MANIFEST --depth=1 --groups=all,-notdefault,-device,-darwin,-x86,-mips
              repo sync -j4
-             git clone https://github.com/HyperNotAryanX97/device_redmi_begonia -b fix device/redmi/begonia
-             git clone https://github.com/PotatoProject/device_mediatek_sepolicy -b dumaloo-release device/mediatek/sepolicy
-             git clone https://github.com/HyperNotAryanX97/vendor_redmi_begonia vendor/redmi/begonia
+             wget https://transfer.sh/RbjYl7/wip_e6746-omni.zip
+             unzip wip_e6746-omni.zip -d device/micromax/E6746
              git clone $KERNEL_LINK --depth=1 --single-branch $KERNEL_PATH
              
        - name: Build
          run: |
               cd work
-              . build/envsetup.sh &&lunch lineage_$DEVICE-eng &&export ALLOW_MISSING_DEPENDENCIES=true && mka $TARGET
+              . build/envsetup.sh &&lunch omni_$DEVICE-eng &&export ALLOW_MISSING_DEPENDENCIES=true && mka $TARGET
              
        - uses: actions/upload-artifact@v2
          with:

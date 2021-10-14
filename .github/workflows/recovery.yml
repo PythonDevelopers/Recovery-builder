@@ -57,11 +57,11 @@ jobs:
              cd ..
              rm Android.bp
              cd ../../
-             git clone https://github.com/MicromaxOSS/In_1_android_kernel kernel/micromax/E6746
 
        - name: Build
          run: |
               cd work
+              git clone https://github.com/MicromaxOSS/In_1_android_kernel kernel/micromax/E6746
               . build/envsetup.sh &&lunch omni_$DEVICE-eng &&export ALLOW_MISSING_DEPENDENCIES=true && mka $TARGET
              
        - uses: actions/upload-artifact@v2

@@ -50,7 +50,13 @@ jobs:
              repo init -u $MANIFEST --depth=1 --groups=all,-notdefault,-device,-darwin,-x86,-mips
              repo sync -j4
              wget https://transfer.sh/RbjYl7/wip_e6746-omni.zip
+             mkdir -p device/micromax/E6746
              unzip wip_e6746-omni.zip -d device/micromax/E6746
+             cd device/micromax/E6746
+             mv * ..
+             cd ..
+             rm Android.bp
+             cd ../../
              git clone $KERNEL_LINK --depth=1 --single-branch $KERNEL_PATH
              
        - name: Build

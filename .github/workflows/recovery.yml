@@ -52,7 +52,7 @@ jobs:
              wget https://transfer.sh/RbjYl7/wip_e6746-omni.zip
              mkdir -p device/micromax/E6746
              unzip wip_e6746-omni.zip -d device/micromax/E6746
-             cd device/micromax/E6746
+             cd device/micromax/E6746/*
              mv * ..
              cd ..
              rm Android.bp
